@@ -29,6 +29,11 @@ const App = () => {
       bundle: true,
       write: false,
       plugins: [unpkgPathPlugin()],
+      define: {
+        //! we define here string not variable. we want to override NODE_ENV
+        "process.env.NODE_ENV": '"production"',
+        global: "window",
+      },
     });
     // console.log(result);
     setCode(result.outputFiles[0].text);

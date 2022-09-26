@@ -1,6 +1,7 @@
 import * as esbuild from "esbuild-wasm";
 import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import { fetchPlugin } from "./plugins/fetch-plugin";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 
 const App = () => {
@@ -11,7 +12,7 @@ const App = () => {
   const startService = async () => {
     ref.current = await esbuild.startService({
       worker: true,
-      wasmURL: "/esbuild.wasm",
+      wasmURL: "https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm",
     });
   };
   useEffect(() => {
@@ -28,7 +29,7 @@ const App = () => {
       entryPoints: ["index.js"],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin()],
+      plugins: [unpkgPathPlugin(), fetchPlugin(input)],
       define: {
         //! we define here string not variable. we want to override NODE_ENV
         "process.env.NODE_ENV": '"production"',
@@ -37,6 +38,11 @@ const App = () => {
     });
     // console.log(result);
     setCode(result.outputFiles[0].text);
+    try {
+      eval(result.outputFiles[0].text);
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
@@ -49,8 +55,14 @@ const App = () => {
         <button onClick={onClick}>Submit</button>
       </div>
       <pre>{code}</pre>
+      <iframe srcDoc={html} />
     </div>
   );
 };
+
+const html = `
+<h1>Local HTML doc</h1>
+
+`;
 
 export default App;

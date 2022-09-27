@@ -6,8 +6,8 @@ import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 
 const App = () => {
   const ref = useRef<any>();
+  const iframe = useRef<any>();
   const [input, setInput] = useState("");
-  const [code, setCode] = useState("");
 
   const startService = async () => {
     ref.current = await esbuild.startService({
@@ -25,6 +25,9 @@ const App = () => {
     }
     console.log(ref.current.transform);
 
+    //reload iframe to prevent errors
+    iframe.current.srcdoc = html;
+
     const result = await ref.current.build({
       entryPoints: ["index.js"],
       bundle: true,
@@ -37,13 +40,36 @@ const App = () => {
       },
     });
     // console.log(result);
-    setCode(result.outputFiles[0].text);
-    try {
-      eval(result.outputFiles[0].text);
-    } catch (err) {
-      alert(err);
-    }
+    // setCode(result.outputFiles[0].text);
+    // try {
+    //   eval(result.outputFiles[0].text);
+    // } catch (err) {
+    //   alert(err);
+    // }
+    iframe.current.contentWindow.postMessage(result.outputFiles[0].text, "*");
   };
+
+  const html = `
+  <html>
+  <head></head>
+  <body>
+  <div id='root'></div>
+  <script>
+  window.addEventListener('message',(event)=>{
+    try{
+    eval(event.data);
+    } catch(err) {
+      const root = document.querySelector('#root');
+      root.innerHTML = '<div style="color:white; background-color:#f59c95">' + '<h4>Runtime error</h4>' + err + '</div>'
+    }
+  },false)
+  
+  </script>
+  </body>
+  </html>
+
+  
+  `;
 
   return (
     <div>
@@ -54,15 +80,14 @@ const App = () => {
       <div>
         <button onClick={onClick}>Submit</button>
       </div>
-      <pre>{code}</pre>
-      <iframe srcDoc={html} />
+      <iframe
+        title="preview"
+        ref={iframe}
+        sandbox="allow-scripts"
+        srcDoc={html}
+      />
     </div>
   );
 };
-
-const html = `
-<h1>Local HTML doc</h1>
-
-`;
 
 export default App;

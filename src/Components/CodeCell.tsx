@@ -5,6 +5,7 @@ import Preview from "./Preview";
 import Resizable from "./Resizable";
 const CodeCell = () => {
   const [input, setInput] = useState("");
+  const [err, setErr] = useState("");
   const [code, setCode] = useState("");
 
   useEffect(() => {
@@ -12,7 +13,8 @@ const CodeCell = () => {
       console.log("awdawd");
       const output = await bundle(input);
       console.log(output);
-      setCode(output);
+      setCode(output.code);
+      setErr(output.err);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -28,7 +30,7 @@ const CodeCell = () => {
           />
         </Resizable>
 
-        <Preview code={code} />
+        <Preview code={code} bundlingStatus={err} />
       </div>
     </Resizable>
   );

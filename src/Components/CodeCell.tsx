@@ -7,31 +7,27 @@ const CodeCell = () => {
   const [input, setInput] = useState("");
   const [code, setCode] = useState("");
 
-  const onClick = async () => {
-    const output = await bundle(input);
-    setCode(output);
-    // try {
-    //   eval(result.outputFiles[0].text);
-    // } catch (err) {
-    //   alert(err);
-    // }
-  };
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      console.log("awdawd");
+      const output = await bundle(input);
+      console.log(output);
+      setCode(output);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [input]);
 
   return (
     <Resizable direction="vertical">
-      <div>
-        <CodeEditor
-          initialValue="const a = 1"
-          onChange={(value) => setInput(value)}
-        />
-        <div>
-          <button
-            className="bg-slate-500 text-white p-2 rounded-sm my-2"
-            onClick={onClick}
-          >
-            Submit
-          </button>
-        </div>
+      <div className="flex flex-row h-[100%]">
+        <Resizable direction="horizontal">
+          <CodeEditor
+            initialValue="const a = 1"
+            onChange={(value) => setInput(value)}
+          />
+        </Resizable>
+
         <Preview code={code} />
       </div>
     </Resizable>

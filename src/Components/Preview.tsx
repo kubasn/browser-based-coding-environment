@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import "./preview.css";
 
 interface PreviewProps {
   code: string;
@@ -6,7 +7,9 @@ interface PreviewProps {
 
 const html = `
 <html>
-<head></head>
+<head>
+<style> html {background-color:white} </style>
+</head>
 <body>
 <div id='root'></div>
 <script>
@@ -32,16 +35,22 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
 
   useEffect(() => {
     iframe.current.srcdoc = html;
-    iframe.current.contentWindow.postMessage(code, "*");
+    //timeout to make sure that our browser is have enough time to update source document and set up event listener that will come 50s latter
+    setTimeout(() => {
+      iframe.current.contentWindow.postMessage(code, "*");
+    }, 50);
   }, [code]);
 
   return (
-    <iframe
-      title="preview"
-      ref={iframe}
-      sandbox="allow-scripts"
-      srcDoc={html}
-    />
+    <div className="preview-wrapper grow ">
+      <iframe
+        className="bg-stone-100 w-full"
+        title="preview"
+        ref={iframe}
+        sandbox="allow-scripts"
+        srcDoc={html}
+      />
+    </div>
   );
 };
 

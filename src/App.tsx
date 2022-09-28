@@ -3,7 +3,7 @@ import CodeCell from "./Components/CodeCell";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-stone-900 h-full m-0 p-0">
       <CodeCell />
     </div>
   );

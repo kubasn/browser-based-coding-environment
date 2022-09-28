@@ -1,8 +1,10 @@
 import MDEditor from "@uiw/react-md-editor";
 import { useState, useEffect, useRef } from "react";
+import "./textEditor.css";
 
 const TextEditor: React.FC = () => {
   const [editingStatus, setEditingStatus] = useState(false);
+  const [value, setValue] = useState<string>("# Header");
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -13,9 +15,7 @@ const TextEditor: React.FC = () => {
         event.target &&
         ref.current.contains(event.target as Node)
       ) {
-        console.log("inside");
-      } else {
-        console.log("outside");
+        return;
       }
       setEditingStatus(false);
       console.log(event.target);
@@ -29,15 +29,18 @@ const TextEditor: React.FC = () => {
 
   if (editingStatus) {
     return (
-      <div ref={ref}>
-        <MDEditor />
+      <div className="text-editor bg-stone-600" ref={ref}>
+        <MDEditor value={value} onChange={(text) => setValue(text || "")} />
       </div>
     );
   }
 
   return (
-    <div onClick={() => setEditingStatus(true)}>
-      <MDEditor.Markdown className="text-white" source="# Header" />
+    <div
+      className="text-editor bg-stone-600 m-2 p-8"
+      onClick={() => setEditingStatus(true)}
+    >
+      <MDEditor.Markdown className="text-white" source={value} />
     </div>
   );
 };

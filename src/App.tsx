@@ -3,13 +3,15 @@ import CodeCell from "./Components/CodeCell";
 import TextEditor from "./Components/TextEditor";
 import { Provider } from "react-redux";
 import { store } from "./state";
+import CellList from "./Components/CellList";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="bg-stone-700 h-full pt-2">
+      <div className="bg-stone-500 h-full pt-2">
         {/* <CodeCell /> */}
-        <TextEditor />
+        {/* <TextEditor /> */}
+        <CellList />
       </div>
     </Provider>
   );

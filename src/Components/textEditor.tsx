@@ -1,11 +1,17 @@
 import MDEditor from "@uiw/react-md-editor";
 import { useState, useEffect, useRef } from "react";
+import { Cell } from "../state";
 import "./textEditor.css";
+import { useActions } from "../hooks/use-actions";
 
-const TextEditor: React.FC = () => {
+interface TextEditorProps {
+  item: Cell;
+}
+
+const TextEditor: React.FC<TextEditorProps> = ({ item }) => {
   const [editingStatus, setEditingStatus] = useState(false);
-  const [value, setValue] = useState<string>("# Header");
   const ref = useRef<HTMLDivElement | null>(null);
+  const { updateCell } = useActions();
 
   useEffect(() => {
     const listener = (event: MouseEvent) => {
@@ -30,7 +36,10 @@ const TextEditor: React.FC = () => {
   if (editingStatus) {
     return (
       <div className="text-editor bg-stone-600" ref={ref}>
-        <MDEditor value={value} onChange={(text) => setValue(text || "")} />
+        <MDEditor
+          value={item.content}
+          onChange={(text) => updateCell(item.id, text || "")}
+        />
       </div>
     );
   }
@@ -40,7 +49,10 @@ const TextEditor: React.FC = () => {
       className="text-editor bg-stone-600 m-2 p-8"
       onClick={() => setEditingStatus(true)}
     >
-      <MDEditor.Markdown className="text-white" source={value} />
+      <MDEditor.Markdown
+        className="text-white"
+        source={item.content || "Click to add note!"}
+      />
     </div>
   );
 };

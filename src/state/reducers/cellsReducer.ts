@@ -62,8 +62,8 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
         return state;
       }
 
-      state.order[targetIndex] = action.payload.id;
       state.order[index] = state.order[targetIndex];
+      state.order[targetIndex] = action.payload.id;
 
       return state;
     default:

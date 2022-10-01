@@ -3,4 +3,6 @@ export enum ActionType {
   DELETE_CELL = "deleteCell",
   INSERT_CELL_BEFORE = "insertCellBefore",
   UPDATE_CELL = "updateCell",
+  BUNDLE_START = "bundle_start",
+  BUNDLE_COMPLATE = "bundle_complate",
 }

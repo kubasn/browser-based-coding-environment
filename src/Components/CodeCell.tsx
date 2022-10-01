@@ -29,7 +29,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ item }) => {
 
   return (
     <Resizable direction="vertical">
-      <div className="flex flex-row h-[100%]">
+      <div className="flex flex-row h-[calc(100%-10px)]">
         <Resizable direction="horizontal">
           <CodeEditor
             initialValue="const a = 1"

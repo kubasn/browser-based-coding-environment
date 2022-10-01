@@ -8,7 +8,7 @@ import CellList from "./Components/CellList";
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="bg-stone-500 h-full pt-2">
+      <div className=" h-full">
         {/* <CodeCell /> */}
         {/* <TextEditor /> */}
         <CellList />

@@ -33,7 +33,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div className="group relative w-[calc(100%-10px)] h-[100%] hover:">
+    <div className="group relative w-[calc(100%-10px)] h-[100%] ">
       <button
         className="bg-sky-800 text-white rounded-sm absolute right-8 top-2 z-10 p-1 opacity-0 group-hover:opacity-100 transition-all duration-[1s]  "
         onClick={onFormatClick}

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducers from "./reducers";
+import reducer from "./reducers";
 import { combineReducers } from "redux";
 import cellsReducer from "./reducers/cellsReducer";
 import { ActionType } from "./actionTypes";
 
-const reducer = combineReducers({
-  cells: cellsReducer,
-});
+// const reducer = combineReducers({
+//   cells: cellsReducer,
+// });
 
 export const store = configureStore({
   reducer,
@@ -14,7 +14,7 @@ export const store = configureStore({
 
 //test
 store.dispatch({
-  type: ActionType.INSERT_CELL_BEFORE,
+  type: ActionType.INSERT_CELL_AFTER,
   payload: {
     id: null,
     type: "code",
@@ -22,7 +22,7 @@ store.dispatch({
 });
 
 store.dispatch({
-  type: ActionType.INSERT_CELL_BEFORE,
+  type: ActionType.INSERT_CELL_AFTER,
   payload: {
     id: null,
     type: "text",

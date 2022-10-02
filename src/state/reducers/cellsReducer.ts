@@ -34,7 +34,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       delete state.data[action.payload.id];
       state.order = state.order.filter((id) => id !== action.payload.id);
       return state;
-    case ActionType.INSERT_CELL_BEFORE:
+    case ActionType.INSERT_CELL_AFTER:
       const cell: Cell = {
         content: "",
         type: action.payload.type,
@@ -46,10 +46,11 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       const index_insert = state.order.findIndex(
         (id) => id === action.payload.id
       );
+      console.log(index_insert);
       if (index_insert < 0) {
-        state.order.push(cell.id);
+        state.order.unshift(cell.id);
       } else {
-        state.order.splice(index_insert, 0, cell.id);
+        state.order.splice(index_insert + 1, 0, cell.id);
       }
       return state;
 

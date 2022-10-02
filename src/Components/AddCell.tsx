@@ -7,7 +7,7 @@ interface AddCellProps {
 }
 
 const AddCell: React.FC<AddCellProps> = ({ id, forceVisible }) => {
-  const { insertCellBefore } = useActions();
+  const { insertCellAfter } = useActions();
   const visibility = forceVisible ? "100" : "0";
 
   return (
@@ -16,13 +16,13 @@ const AddCell: React.FC<AddCellProps> = ({ id, forceVisible }) => {
     >
       <button
         className=" z-[100] bg-stone-800  text-stone-100  p-2 rounded-md font-medium hover:bg-stone-700 transition-all   "
-        onClick={() => insertCellBefore(id, "code")}
+        onClick={() => insertCellAfter(id, "code")}
       >
         Code
       </button>
       <button
         className=" z-[100] bg-stone-800 text-stone-100 p-2 rounded-md font-medium hover:bg-stone-700 transition-all  "
-        onClick={() => insertCellBefore(id, "text")}
+        onClick={() => insertCellAfter(id, "text")}
       >
         Text
       </button>

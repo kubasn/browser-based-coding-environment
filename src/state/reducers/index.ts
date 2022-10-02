@@ -1,9 +1,12 @@
 import cellsReducer from "./cellsReducer";
 import { combineReducers } from "redux";
-const reducers = combineReducers({
+import bundlesReducer from "./bundlesReducer";
+
+const reducer = combineReducers({
   cells: cellsReducer,
+  bundles: bundlesReducer,
 });
 
-export default reducers;
+export default reducer;
 
-export type RootState = ReturnType<typeof reducers>;
+export type RootState = ReturnType<typeof reducer>;

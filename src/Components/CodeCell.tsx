@@ -16,6 +16,10 @@ const CodeCell: React.FC<CodeCellProps> = ({ item }) => {
   const bundle = useTypedSelector(({ bundles }) => bundles[item.id]);
 
   useEffect(() => {
+    if (!bundle) {
+      createBundle(item.id, item.content);
+      return;
+    }
     const timer = setTimeout(async () => {
       createBundle(item.id, item.content);
     }, 1000);
@@ -32,8 +36,11 @@ const CodeCell: React.FC<CodeCellProps> = ({ item }) => {
             onChange={(value) => updateCell(item.id, value)}
           />
         </Resizable>
-
-        {bundle && <Preview code={bundle.code} bundlingStatus={bundle.err} />}
+        {!bundle || bundle.loading ? (
+          <div>Loading...</div>
+        ) : (
+          <Preview code={bundle.code} bundlingStatus={bundle.err} />
+        )}
       </div>
     </Resizable>
   );

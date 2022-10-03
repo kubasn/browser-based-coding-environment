@@ -13,11 +13,13 @@ const CellListItem: React.FC<CellListItemProps> = ({ item }) => {
     item.type == "code" ? <CodeCell item={item} /> : <TextEditor item={item} />;
 
   return (
-    <div className="relative w-[800px] margin-auto">
-      {ListItem}
-      <div className="absolute top-1 right-1  ">
-        {" "}
-        <ActionBar id={item.id} />
+    <div className="w-full flex justify-center">
+      <div className="relative w-[800px] margin-auto">
+        {ListItem}
+        <div className="absolute top-1 right-1  ">
+          {" "}
+          <ActionBar id={item.id} />
+        </div>
       </div>
     </div>
   );

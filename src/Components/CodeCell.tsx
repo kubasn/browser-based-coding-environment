@@ -6,6 +6,7 @@ import Resizable from "./Resizable";
 import { useActions } from "../hooks/use-actions";
 //pull state out of store
 import { useTypedSelector } from "../hooks/use-typed-selector";
+import "./codeCell.css";
 
 interface CodeCellProps {
   item: Cell;
@@ -37,7 +38,16 @@ const CodeCell: React.FC<CodeCellProps> = ({ item }) => {
           />
         </Resizable>
         {!bundle || bundle.loading ? (
-          <div>Loading...</div>
+          <div className="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         ) : (
           <Preview code={bundle.code} bundlingStatus={bundle.err} />
         )}

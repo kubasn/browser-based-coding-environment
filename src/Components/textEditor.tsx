@@ -46,7 +46,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ item }) => {
 
   return (
     <div
-      className="text-editor bg-stone-600 w-[800px]  p-8"
+      className="text-editor bg-stone-600 w-full  p-8"
       onClick={() => setEditingStatus(true)}
     >
       <MDEditor.Markdown

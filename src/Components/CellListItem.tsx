@@ -14,7 +14,7 @@ const CellListItem: React.FC<CellListItemProps> = ({ item }) => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="relative w-[800px] margin-auto">
+      <div className="relative mx-[20px] w-full ">
         {ListItem}
         <div className="absolute top-1 right-1  ">
           {" "}

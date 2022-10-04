@@ -7,6 +7,7 @@ import { useActions } from "../hooks/use-actions";
 //pull state out of store
 import { useTypedSelector } from "../hooks/use-typed-selector";
 import "./codeCell.css";
+import { useAllCode } from "../hooks/use-all-codes";
 
 interface CodeCellProps {
   item: Cell;
@@ -15,36 +16,19 @@ interface CodeCellProps {
 const CodeCell: React.FC<CodeCellProps> = ({ item }) => {
   const { updateCell, createBundle } = useActions();
   const bundle = useTypedSelector(({ bundles }) => bundles[item.id]);
-  //current cell code + all previous code
-  const cumulativeCode = useTypedSelector((state) => {
-    const { data, order } = state.cells;
-    const orderedCells = order.map((id) => data[id]);
-    const allCodes = [];
-    for (let i of orderedCells) {
-      if (i.type === "code") {
-        allCodes.push(i.content);
-      }
-      //if we get to current cell -> break function
-      if (i.id === item.id) {
-        break;
-      }
-    }
-    return allCodes;
-  });
-
-  console.log(cumulativeCode);
+  const cumulativeCode = useAllCode(item.id);
 
   useEffect(() => {
     if (!bundle) {
-      createBundle(item.id, item.content);
+      createBundle(item.id, cumulativeCode);
       return;
     }
     const timer = setTimeout(async () => {
-      createBundle(item.id, item.content);
+      createBundle(item.id, cumulativeCode);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [item.content, item.id]);
+  }, [cumulativeCode, item.id, createBundle]);
 
   return (
     <Resizable direction="vertical">

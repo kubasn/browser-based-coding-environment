@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.serveCommand = void 0;
+const commander_1 = require("commander");
+const local_api_1 = require("local-api");
+exports.serveCommand = new commander_1.Command()
+    //we are going to watch for watch command filename-optional value , 4005 -default port value []-value in there is optional <> in this is required
+    .command("serve [filename]")
+    .description("Open a file for editing")
+    .option("-p, --port <number", "port to run server on", "4005")
+    //'notebook.js' -default value
+    .action((filename = "notebook.js", options) => {
+    (0, local_api_1.serve)(parseInt(options.port), filename, "/");
+});

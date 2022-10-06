@@ -1,5 +1,5 @@
 import { ActionType } from "../actionTypes";
-import { CellTypes } from "../cell";
+import { Cell, CellTypes } from "../cell";
 
 export type Direction = "up" | "down";
 
@@ -51,6 +51,19 @@ export interface BundleComplete {
       err: string;
     };
   };
+}
+
+export interface fetchCellsAction {
+  type: ActionType.FETCH_CELLS;
+}
+
+export interface fetchCellsActionErrorComplate {
+  type: ActionType.FETCH_CELLS_COMPLATE;
+  payload: Cell[];
+}
+
+export interface fetchCellsErrorAction {
+  type: ActionType.FETCH_CELLS_ERROR;
 }
 
 //union

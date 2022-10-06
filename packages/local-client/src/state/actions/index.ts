@@ -64,6 +64,7 @@ export interface fetchCellsActionErrorComplate {
 
 export interface fetchCellsErrorAction {
   type: ActionType.FETCH_CELLS_ERROR;
+  payload: string;
 }
 
 //union

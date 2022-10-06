@@ -11,6 +11,7 @@ const App = () => {
       <div className=" h-full">
         {/* <CodeCell /> */}
         {/* <TextEditor /> */}
+        <h1>Test</h1>
         <CellList />
       </div>
     </Provider>

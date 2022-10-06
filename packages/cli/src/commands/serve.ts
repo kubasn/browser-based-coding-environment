@@ -5,7 +5,8 @@ import path from "path";
 interface ServeError {
   code: string;
 }
-
+const isProduction = process.env.NODE_ENV === "production";
+//we want use proxy if we are not in production
 export const serveCommand = new Command()
   //we are going to watch for watch command filename-optional value , 4005 -default port value []-value in there is optional <> in this is required
   .command("serve [filename]")
@@ -20,7 +21,12 @@ export const serveCommand = new Command()
     try {
       const dir = path.join(process.cwd(), path.dirname(filename));
       //await for a call to serve
-      await serve(parseInt(options.port), path.basename(filename), dir);
+      await serve(
+        parseInt(options.port),
+        path.basename(filename),
+        dir,
+        !isProduction
+      );
       console.log(
         `opened ${filename}. Navigate to http://localhost:${options.port} to edit this file`
       );

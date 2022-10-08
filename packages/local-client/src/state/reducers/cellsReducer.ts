@@ -3,6 +3,7 @@ import { Action } from "../actions";
 import { Cell } from "../cell";
 import produce from "immer";
 import { stat } from "fs/promises";
+import { store } from "../store";
 
 const randomId = () => Math.random().toString(36).substr(2, 5);
 
@@ -25,6 +26,28 @@ const initialState: CellsState = {
 //and returns object that type is CellsState
 const reducer = produce((state: CellsState = initialState, action: Action) => {
   switch (action.type) {
+    case ActionType.SAVE_CELLS_ERROR:
+      state.error = action.payload;
+      return state;
+
+    case ActionType.FETCH_CELLS:
+      state.loading = true;
+      state.error = null;
+      return state;
+    case ActionType.FETCH_CELLS_COMPLATE:
+      state.loading = false;
+      state.order = action.payload.map((cell) => cell.id);
+      state.data = action.payload.reduce((obj, cell) => {
+        obj[cell.id] = cell;
+        return obj;
+      }, {} as CellsState["data"]); //initial value for obj);
+      return state;
+
+    case ActionType.FETCH_CELLS_ERROR:
+      state.loading = false;
+      state.error = action.payload;
+      return state;
+
     case ActionType.UPDATE_CELL:
       const { id, content } = action.payload;
       state.data[id].content = content;

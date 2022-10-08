@@ -10,15 +10,17 @@ export const serve = (
   useProxy: boolean
 ) => {
   const app = express();
+  //we try to match route if dont use proxy
+  app.use(createCellsRouter(filename, dir));
 
   if (useProxy) {
-    // app.use(
-    //   createProxyMiddleware({
-    //     target: "http://localhost:3000",
-    //     ws: true,
-    //     logLevel: "silent",
-    //   })
-    // );
+    app.use(
+      createProxyMiddleware({
+        target: "http://localhost:3000",
+        ws: true,
+        logLevel: "silent",
+      })
+    );
   } else {
     //reseolve original path of original.html
     const packagePath = require.resolve("local-client/build/index.html");
@@ -26,7 +28,6 @@ export const serve = (
     app.use(express.static(path.dirname(packagePath)));
   }
 
-  app.use(createCellsRouter(filename, dir));
   return new Promise<void>((resolve, reject) => {
     //we taking the entire process of starting up a express server and wrap in into promise
     app.listen(port, resolve).on("error", reject);

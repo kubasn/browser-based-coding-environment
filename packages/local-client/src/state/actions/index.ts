@@ -53,17 +53,22 @@ export interface BundleComplete {
   };
 }
 
-export interface fetchCellsAction {
+export interface FetchCellsAction {
   type: ActionType.FETCH_CELLS;
 }
 
-export interface fetchCellsActionErrorComplate {
+export interface FetchCellsActionErrorComplate {
   type: ActionType.FETCH_CELLS_COMPLATE;
   payload: Cell[];
 }
 
-export interface fetchCellsErrorAction {
+export interface FetchCellsErrorAction {
   type: ActionType.FETCH_CELLS_ERROR;
+  payload: string;
+}
+
+export interface SaveCellsErrorAction {
+  type: ActionType.SAVE_CELLS_ERROR;
   payload: string;
 }
 
@@ -74,4 +79,8 @@ export type Action =
   | InsertCellAfterAction
   | UpdateCellAction
   | BundleStart
-  | BundleComplete;
+  | BundleComplete
+  | FetchCellsAction
+  | FetchCellsActionErrorComplate
+  | FetchCellsErrorAction
+  | SaveCellsErrorAction;

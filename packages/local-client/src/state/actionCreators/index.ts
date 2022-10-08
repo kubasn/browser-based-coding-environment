@@ -1,4 +1,5 @@
 import { ActionType } from "../actionTypes";
+import axios from "axios";
 import { Dispatch } from "redux";
 import {
   Action,
@@ -10,8 +11,9 @@ import {
   BundleStart,
   BundleComplete,
 } from "../actions";
-import { CellTypes } from "../cell";
+import { Cell, CellTypes } from "../cell";
 import bundle from "../../bundler";
+import { RootState } from "../reducers";
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -67,5 +69,39 @@ export const createBundle = (id: string, inputCode: string) => {
         },
       },
     });
+  };
+};
+
+export const fetchCells = () => {
+  //we can only call dispatch with a propely typed Action object
+  return async (dispatch: Dispatch<Action>) => {
+    //flip loading flag over to true
+    dispatch({ type: ActionType.FETCH_CELLS });
+
+    try {
+      //request to api
+      const { data }: { data: Cell[] } = await axios.get("/cells");
+      dispatch({ type: ActionType.FETCH_CELLS_COMPLATE, payload: data });
+    } catch (err) {
+      if (err instanceof Error)
+        dispatch({ type: ActionType.FETCH_CELLS_ERROR, payload: err.message });
+    }
+  };
+};
+
+export const saveCells = () => {
+  return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const {
+      cells: { data, order },
+    } = getState();
+    //get data in propely order
+    const cells = order.map((id) => data[id]);
+    try {
+      await axios.post("/cells", { cells });
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch({ type: ActionType.SAVE_CELLS_ERROR, payload: err.message });
+      }
+    }
   };
 };

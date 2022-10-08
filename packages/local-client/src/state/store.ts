@@ -1,18 +1,20 @@
 import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
 import reducer from "./reducers";
 import { persistMiddleware } from "./middlewares/persist-middleware";
+import thunk from "redux-thunk";
 
 // const reducer = combineReducers({
 //   cells: cellsReducer,
 // });
 
-export const store = configureStore(
-  {
-    reducer,
-  },
-  {},
-  applyMiddleware(thunk)
-);
+const preloadedState = {};
+const middleware = [persistMiddleware, thunk];
+
+export const store = configureStore({
+  reducer,
+  preloadedState, //middleware(persistMiddleware),
+  middleware,
+});
 
 // //test
 // store.dispatch({

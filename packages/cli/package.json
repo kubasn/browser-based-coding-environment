@@ -1,20 +1,30 @@
 {
-  "name": "cli",
+  "name": "jsn-note",
   "version": "1.0.0",
   "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc --watch --preserveWatchOutput"
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "esbuild src/index.ts --platform=node --outfile=dist/index.js --bundle --minify --define:process.env.NODE_ENV='production'"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^9.4.1",
-    "local-api": "^1.0.0"
+    "@jsn-note/local-client": "^1.0.0"
   },
   "devDependencies": {
+    "@jsn-note/local-api": "^1.0.0",
+    "commander": "^9.4.1",
     "@types/node": "^18.8.1",
+    "esbuild": "0.8.26",
     "typescript": "^4.8.4"
   }
 }

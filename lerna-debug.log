@@ -1,0 +1,92 @@
+0 silly argv {
+0 silly argv   _: [ 'publish' ],
+0 silly argv   yes: true,
+0 silly argv   y: true,
+0 silly argv   composed: 'publish',
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': 'C:\\Users\\sosin\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js',
+0 silly argv   bump: 'from-package'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook
+3 verbose session 9c1ca16e0be286cc
+4 verbose user-agent lerna/3.22.1/node@v16.15.1+x64 (win32)
+5 verbose git-describe undefined => "v1.0.0-1-gc3f8d9b"
+6 silly git-describe parsed => {"lastTagName":"v1.0.0","lastVersion":"v1.0.0","refCount":"1","sha":"c3f8d9b","isDirty":false}
+7 silly getUnpublishedPackages
+8 warn Unable to determine published version, assuming "@jsn-note/local-client" unpublished.
+9 warn Unable to determine published version, assuming "jsn-note" unpublished.
+10 warn Unable to determine published version, assuming "@jsn-note/local-api" unpublished.
+11 info auto-confirmed
+12 info publish Publishing packages to npm...
+13 info Verifying npm credentials
+14 verbose Retrieving npm user profile
+15 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 473ms
+16 silly npm profile get received {"tfa":false,"name":"kuba_sn","email":"sosinkuba@gmail.com","email_verified":true,"created":"2022-10-09T10:48:28.872Z","updated":"2022-10-09T10:48:28.869Z","cidr_whitelist":null}
+17 silly get npm username received {"username":"kuba_sn","tfa":false,"name":"kuba_sn","email":"sosinkuba@gmail.com","email_verified":true,"created":"2022-10-09T10:48:28.872Z","updated":"2022-10-09T10:48:28.869Z","cidr_whitelist":null}
+18 silly verifyNpmPackageAccess
+19 http fetch GET 200 https://registry.npmjs.org/-/org/kuba_sn/package?format=cli 279ms
+20 warn The logged-in user does not have any previously-published packages, skipping permission checks...
+21 info Checking two-factor auth mode
+22 verbose Retrieving npm user profile
+23 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 350ms
+24 silly npm profile get received {"tfa":false,"name":"kuba_sn","email":"sosinkuba@gmail.com","email_verified":true,"created":"2022-10-09T10:48:28.872Z","updated":"2022-10-09T10:48:28.869Z","cidr_whitelist":null}
+25 silly 2FA false
+26 warn ENOLICENSE Packages jsn-note, @jsn-note/local-api, and @jsn-note/local-client are missing a license.
+26 warn ENOLICENSE One way to fix this is to add a LICENSE.md file to the root of this repository.
+26 warn ENOLICENSE See https://choosealicense.com for additional guidance.
+27 silly getCurrentSHA
+28 verbose getCurrentSHA c3f8d9b102423ef9d90ce43c3be73a3abba15b88
+29 silly lifecycle No script for "prepublish" in "root", continuing
+30 silly lifecycle No script for "prepare" in "root", continuing
+31 silly lifecycle No script for "prepublishOnly" in "root", continuing
+32 silly lifecycle No script for "prepack" in "root", continuing
+33 verbose pack-directory packages\local-client
+34 silly lifecycle No script for "prepublish" in "@jsn-note/local-client", continuing
+35 silly lifecycle No script for "prepare" in "@jsn-note/local-client", continuing
+36 silly lifecycle "prepublishOnly" starting in "@jsn-note/local-client"
+37 info lifecycle @jsn-note/local-client@1.0.0~prepublishOnly: @jsn-note/local-client@1.0.0
+38 verbose lifecycle @jsn-note/local-client@1.0.0~prepublishOnly: unsafe-perm in lifecycle true
+39 verbose lifecycle @jsn-note/local-client@1.0.0~prepublishOnly: PATH: C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook\packages\local-client\node_modules\.bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\MATLAB\R2021b\bin;C:\Users\sosin\AppData\Roaming\Python\Python38\Scripts;C:\Python34\Scripts\;C:\Users\sosin\AppData\Local\Programs\Python\Python310\Scripts;C:\Program Files\PuTTY\;;C:\Program Files\Common Files\Datawatch\Drivers\7.1.5\jre\bin;C:\Program Files\Common Files\Datawatch\Drivers\7.1.5\jre\bin\server;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Users\sosin\AppData\Local\Microsoft\WindowsApps;C:\Users\sosin\AppData\Local\Programs\Microsoft VS Code\bin;C:\mongosh-1.2.3-win32-x64\bin;C:\Users\sosin\AppData\Roaming\npm
+40 verbose lifecycle @jsn-note/local-client@1.0.0~prepublishOnly: CWD: C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook\packages\local-client
+41 silly lifecycle @jsn-note/local-client@1.0.0~prepublishOnly: Args: [ '/d /s /c', 'npm run build' ]
+42 silly lifecycle @jsn-note/local-client@1.0.0~prepublishOnly: Returned: code: 0  signal: null
+43 silly lifecycle "prepublishOnly" finished in "@jsn-note/local-client"
+44 silly lifecycle No script for "prepack" in "@jsn-note/local-client", continuing
+45 silly lifecycle No script for "postpack" in "@jsn-note/local-client", continuing
+46 verbose packed packages\local-client
+47 verbose pack-directory packages\cli
+48 verbose pack-directory packages\local-api
+49 silly lifecycle No script for "prepublish" in "jsn-note", continuing
+50 silly lifecycle No script for "prepublish" in "@jsn-note/local-api", continuing
+51 silly lifecycle No script for "prepare" in "jsn-note", continuing
+52 silly lifecycle No script for "prepare" in "@jsn-note/local-api", continuing
+53 silly lifecycle "prepublishOnly" starting in "jsn-note"
+54 info lifecycle jsn-note@1.0.0~prepublishOnly: jsn-note@1.0.0
+55 silly lifecycle "prepublishOnly" starting in "@jsn-note/local-api"
+56 info lifecycle @jsn-note/local-api@1.0.0~prepublishOnly: @jsn-note/local-api@1.0.0
+57 verbose lifecycle jsn-note@1.0.0~prepublishOnly: unsafe-perm in lifecycle true
+58 verbose lifecycle jsn-note@1.0.0~prepublishOnly: PATH: C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook\packages\cli\node_modules\.bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\MATLAB\R2021b\bin;C:\Users\sosin\AppData\Roaming\Python\Python38\Scripts;C:\Python34\Scripts\;C:\Users\sosin\AppData\Local\Programs\Python\Python310\Scripts;C:\Program Files\PuTTY\;;C:\Program Files\Common Files\Datawatch\Drivers\7.1.5\jre\bin;C:\Program Files\Common Files\Datawatch\Drivers\7.1.5\jre\bin\server;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Users\sosin\AppData\Local\Microsoft\WindowsApps;C:\Users\sosin\AppData\Local\Programs\Microsoft VS Code\bin;C:\mongosh-1.2.3-win32-x64\bin;C:\Users\sosin\AppData\Roaming\npm
+59 verbose lifecycle jsn-note@1.0.0~prepublishOnly: CWD: C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook\packages\cli
+60 silly lifecycle jsn-note@1.0.0~prepublishOnly: Args: [
+60 silly lifecycle   '/d /s /c',
+60 silly lifecycle   "esbuild src/index.ts --platform=node --outfile=dist/index.js --bundle --minify --define:process.env.NODE_ENV='production'"
+60 silly lifecycle ]
+61 silly lifecycle jsn-note@1.0.0~prepublishOnly: Returned: code: 0  signal: null
+62 verbose lifecycle @jsn-note/local-api@1.0.0~prepublishOnly: unsafe-perm in lifecycle true
+63 verbose lifecycle @jsn-note/local-api@1.0.0~prepublishOnly: PATH: C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook\packages\local-api\node_modules\.bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\MATLAB\R2021b\bin;C:\Users\sosin\AppData\Roaming\Python\Python38\Scripts;C:\Python34\Scripts\;C:\Users\sosin\AppData\Local\Programs\Python\Python310\Scripts;C:\Program Files\PuTTY\;;C:\Program Files\Common Files\Datawatch\Drivers\7.1.5\jre\bin;C:\Program Files\Common Files\Datawatch\Drivers\7.1.5\jre\bin\server;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Users\sosin\AppData\Local\Microsoft\WindowsApps;C:\Users\sosin\AppData\Local\Programs\Microsoft VS Code\bin;C:\mongosh-1.2.3-win32-x64\bin;C:\Users\sosin\AppData\Roaming\npm
+64 verbose lifecycle @jsn-note/local-api@1.0.0~prepublishOnly: CWD: C:\Users\sosin\Desktop\nauka\react-adv-course\js-bundling-app\jbook\packages\local-api
+65 silly lifecycle @jsn-note/local-api@1.0.0~prepublishOnly: Args: [ '/d /s /c', 'tsc' ]
+66 silly lifecycle "prepublishOnly" finished in "jsn-note"
+67 silly lifecycle No script for "prepack" in "jsn-note", continuing
+68 error ZlibError: zlib: invalid stored block lengths
+68 error     at Unzip.write (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\minizlib\index.js:147:22)
+68 error     at Object.write (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\tar\lib\parse.js:305:58)
+68 error     at Yallist.<anonymous> (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\minipass\index.js:374:18)
+68 error     at Yallist.forEach (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\yallist\yallist.js:156:8)
+68 error     at ReadStream.emit (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\minipass\index.js:373:20)
+68 error     at ReadStream.emit (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\fs-minipass\index.js:154:22)
+68 error     at ReadStream.write (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\minipass\index.js:163:17)
+68 error     at ReadStream.[_handleChunk] (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\fs-minipass\index.js:131:19)
+68 error     at ReadStream.[_onread] (C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\fs-minipass\index.js:109:32)
+68 error     at C:\Users\sosin\AppData\Roaming\npm\node_modules\lerna\node_modules\fs-minipass\index.js:101:22

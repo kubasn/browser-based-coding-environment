@@ -21,7 +21,7 @@ const serve = (port, filename, dir, useProxy) => {
     }
     else {
         //reseolve original path of original.html
-        const packagePath = require.resolve("local-client/build/index.html");
+        const packagePath = require.resolve("@jsn-note/local-client/build/index.html");
         //go to local client and set up build directory
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }

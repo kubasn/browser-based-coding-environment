@@ -14,6 +14,11 @@ A web applications that allows execute user's code in the browser (like CodePen)
 - HTML
 - CSS 
 
+## Redux design
+
+
+![responsible](/images/reduxStore.PNG "running application")
+
 ## Screenshots
 
 - To install package use:
